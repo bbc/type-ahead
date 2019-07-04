@@ -1,5 +1,6 @@
 html, body {
-  margin: 10px;
+  margin: auto;
+  height: 100%;
 }
 
 .App {

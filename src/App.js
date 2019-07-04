@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
+import Autosuggest from './Autosuggest';
 
 const App = () => (
   <div className="App">
-    Hello
+    Find Shakespeare plays
+    <Autosuggest />
   </div>
 );
 
