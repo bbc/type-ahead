@@ -1,23 +1,11 @@
 import React from 'react';
 import AsyncSelect from 'react-select/async';
 
-const promiseOptions = inputValue => fetch('/shakespeare_as_you_type/_search', {
-  "query": {
-    "multi_match": {
-      "query": inputValue,
-      "type": "bool_prefix",
-      "fields": [
-        "play_name",
-        "play_name._2gram",
-        "play_name._3gram"
-      ]
-    }
-  }
-})
+const promiseOptions = inputValue => fetch(`/api/search?q=${inputValue}`)
 .then(r => r.json())
 .then(r => {
   console.log(r);
-  return r;
+  return r.body;
 })
 .then(({ hits }) => {
   return hits.hits.map(({ _id, _source }) => ({
