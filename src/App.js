@@ -4,7 +4,7 @@ import Autosuggest from './Autosuggest';
 
 const App = () => (
   <div className="App">
-    Find Shakespeare plays
+    <h1>Shakespeare plays</h1>
     <Autosuggest />
   </div>
 );

@@ -1,9 +1,11 @@
-html, body {
+html,
+body {
   margin: auto;
   height: 100%;
 }
 
 .App {
+  margin-top: 15%;
   text-align: center;
 }
 
