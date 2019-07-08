@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import AsyncSelect from 'react-select/async';
 import get from 'lodash/get';
 import ReactHtmlParser from 'react-html-parser';
@@ -7,6 +7,17 @@ class Autosuggest extends React.Component {
   state = {
     inputValue: '',
     options: [],
+  };
+
+  fixMySearch = () => {
+    this.setState(state => ({
+      inputValue: state.options[0].text,
+      options: [],
+    }));
+  };
+
+  handleInputChange = e => {
+    this.setState({ inputValue: e || '' });
   };
 
   promiseOptions = inputValue =>
@@ -34,19 +45,28 @@ class Autosuggest extends React.Component {
 
   render() {
     return (
-      <div>
-        <div style={{ maxWidth: '50%', margin: 'auto' }}>
+      <div style={{ maxWidth: '50%', margin: 'auto' }}>
+        <div>
           <AsyncSelect
+            inputValue={this.state.inputValue}
+            onInputChange={this.handleInputChange}
             cacheOptions
             defaultOptions
             loadOptions={this.promiseOptions}
             isMulti
           />
         </div>
-        <div>
-          {this.state.options.length > 0 ? <h3>Did you mean: </h3> : null}
+        <div style={{ marginTop: '50px', textAlign: 'left' }}>
+          {this.state.options.length > 0 ? (
+            <h3 style={{ color: 'red' }}>Did you mean: </h3>
+          ) : null}
           {this.state.options.map(option => (
-            <span>{ReactHtmlParser(option.highlighted)}</span>
+            <a
+              style={{ textDecoration: 'underline' }}
+              onClick={this.fixMySearch}
+            >
+              {ReactHtmlParser(option.highlighted)}
+            </a>
           ))}
         </div>
       </div>
