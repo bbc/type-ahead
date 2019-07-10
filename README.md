@@ -7,7 +7,7 @@ It consists of a NodeJS REST API that talks with ElasticSearch and a simple UI t
 ## Setup
 
 - You will need ElasticSearch and Kibana
-- This demo is based on William Shakespeare's plays data set that that can be found [here](https://www.elastic.co/guide/en/kibana/current/tutorial-load-dataset.html)
+- This demo is based on William Shakespeares' plays data set that that can be found [here](https://www.elastic.co/guide/en/kibana/current/tutorial-load-dataset.html)
 
 ## Elastic Search
 
