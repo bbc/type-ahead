@@ -127,3 +127,10 @@ POST shakespeare_ux_index/_search
 
 there are several ways to search and configure these two features. This is an example that works well for this use case.
 But depending on the type of the data on different attributes it can be configured to serve specific needs. On the API there is another example of `searching-as-you-type` query.
+
+### Useful resources
+
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/search-as-you-type.html
+
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-phrase.html
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
