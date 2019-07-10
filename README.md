@@ -134,3 +134,5 @@ But depending on the type of the data on different attributes it can be configur
 
 - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-phrase.html
 - https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
+
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-completion.html#search-suggesters-completion
