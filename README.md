@@ -83,3 +83,47 @@ PUT shakespeare_ux_index
   }
 }
 ```
+
+One way to get search-as-you-type and suggestions is from Kibana
+
+```
+POST shakespeare_ux_index/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "kin",
+      "type": "bool_prefix",
+      "fields": [
+        "play_name",
+        "play_name.sayt",
+        "play_name._2gram",
+        "play_name._3gram"
+      ]
+    }
+  },
+  "collapse" : {
+    "field" : "play_name"
+  },
+  "suggest": {
+    "text": "Kign",
+    "simple_phrase": {
+      "phrase": {
+        "field": "play_name.trigram",
+        "size": 1,
+        "gram_size": 3,
+        "direct_generator": [ {
+          "field": "play_name.trigram",
+          "suggest_mode": "always"
+        } ],
+        "highlight": {
+          "pre_tag": "<em>",
+          "post_tag": "</em>"
+        }
+      }
+    }
+  }
+}
+```
+
+there are several ways to search and configure these two features. This is an example that works well for this use case.
+But depending on the type of the data on different attributes it can be configured to serve specific needs. On the API there is another example of `searching-as-you-type` query.
